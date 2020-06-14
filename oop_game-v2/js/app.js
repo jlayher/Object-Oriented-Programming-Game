@@ -8,11 +8,13 @@
 * *** PROBABLY WHERE EX-CREDT KEY PRESS AND KEY UP EVENTS OCCUR***
 */
 
+
 //test code
 
-
-
-const game = new Game();
-
-game.startGame();
-console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+let game;
+//who decided to give the ID a double underscore??  If this is conventional programming, explain it in a lesson.
+const resetButton = document.getElementById('btn__reset');
+resetButton.addEventListener('click', () => {
+  game = new Game();
+  game.startGame();
+});
