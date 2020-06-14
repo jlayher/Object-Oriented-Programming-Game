@@ -15,7 +15,7 @@
  class Game {
    constructor(){
      this.missed = 0;
-     this.phrases = [];  //an array of 5 Phrase objects to use with the game. Letters and Spaces, no Numbers, Punctuation, etc.
+     this.phrases = this.createPhrases();
      this.activePhrase = null;
    }
 
@@ -24,15 +24,25 @@
     * @return {array} An array of phrases that could be used in the game
    */
    createPhrases(){
+     return [
+     new Phrase('Rip and Tear'),
+     new Phrase('Now this is Podracing'),
+     new Phrase('Keep your stupid comments in your pocket'),
+     new Phrase('Miyazaki is a Sweety'),
+     new Phrase('My Dad Works At NINTENDO')
+    ];
+   }
 
-
+   /*
+    * Selects random phrase from the phrases property
+    * @return {Object} Phrase object chosen to be used
+   */
+   getRandomPhrase(){
+     const randomPhrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
+     return randomPhrase;
    }
 
    startGame(){
-
-   }
-
-   getRandomPhrase(){
 
    }
 

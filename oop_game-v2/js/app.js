@@ -9,12 +9,15 @@
 */
 
 //test code
-// const phrase = new Phrase('Sex is GREAT');
-// console.log(`Phrase - phrase: ${phrase.phrase}`);
-// const game = new Game();
+
+const logPhrase = (phrase) => {
+  console.log(`Phrase - phrase: `, phrase.phrase);
+};
 
 const game = new Game();
 
-game.phrases.forEach((phrase, index) => {
-  console.log(`Phrase ${index} - phrase: ${phrase.phrase}`);
-});
+logPhrase(game.getRandomPhrase());
+logPhrase(game.getRandomPhrase());
+logPhrase(game.getRandomPhrase());
+logPhrase(game.getRandomPhrase());
+logPhrase(game.getRandomPhrase());
