@@ -31,11 +31,24 @@
        }
      }
 
-   checkLetter(){
-
+/*
+ * Checks if passed letter is in phrase
+ * @param (string) letter - Letter to check
+*/
+   checkLetter(letter){
+     return this.phrase.includes(letter);  //true or false?
    }
 
-   showMatchedLetter(){
-
+/*
+ * Displays passed letter on screen after a match is found
+ * @param (string) letter - Letter to display
+*/
+   showMatchedLetter(letter){
+     let lettersInPhrase = document.querySelectorAll('#phrase li');
+     for (let i = 0; i < lettersInPhrase.length; i++){
+       if (lettersInPhrase[i].className === letter){
+         lettersInPhrase[i].addClassName = 'show';
+       }
+     }
    }
  }
