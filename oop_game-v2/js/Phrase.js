@@ -44,10 +44,11 @@
  * @param (string) letter - Letter to display
 */
    showMatchedLetter(letter){
-     let lettersInPhrase = document.querySelectorAll('#phrase li');
+     const lettersInPhrase = document.querySelectorAll('#phrase li');
+     console.log(lettersInPhrase);
      for (let i = 0; i < lettersInPhrase.length; i++){
        if (lettersInPhrase[i].className === letter){
-         lettersInPhrase[i].addClassName = 'show';
+         lettersInPhrase[i].className = 'show';
        }
      }
    }
