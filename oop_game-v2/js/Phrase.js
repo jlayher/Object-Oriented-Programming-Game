@@ -45,10 +45,10 @@
 */
    showMatchedLetter(letter){
      const lettersInPhrase = document.querySelectorAll('#phrase li');
-     console.log(lettersInPhrase);
      for (let i = 0; i < lettersInPhrase.length; i++){
-       if (lettersInPhrase[i].className === letter){
-         lettersInPhrase[i].className = 'show';
+       if (lettersInPhrase[i].textContent === letter){
+         lettersInPhrase[i].classList.remove('hide');
+         lettersInPhrase[i].classList.add('show');
        }
      }
    }

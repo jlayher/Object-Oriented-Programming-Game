@@ -70,15 +70,31 @@
  * Checks for winning move
  * @return {boolean} True if game has been won, false if game wasn't won
 */
+// check to see if player has shown all of the letters in the active phrase
+ // split active phrase into an array of single letters
+ // itterate over the array of letters
+    // if all letters have the class name show, or if no letters have the hidden class...
+      // then checkForWin returns True
+    // else checkForWin returns False
    checkForWin(){
-     // check to see if player has shown all of the letters in the active phrase
+     const lettersInPhrase = document.querySelectorAll('#phrase li');
+     let spaceLi = 0;
+     let shownLi = 0;
 
-     // split active phrase into an array of single letters
-     // itterate over the array of letters
-        // if all letters have the class name show, or if no letters have the hidden class...
-          // then checkForWin returns True
-        // else checkForWin returns False
+     for (let i = 0; i < lettersInPhrase.length; i++){
+       if(lettersInPhrase[i].classList.contains('show')){
+        shownLi += 1;
+       }else if(lettersInPhrase[i].classList.contains('space')){
+        shownLi += 1;
+       }
    }
+   if (shownLi >= lettersInPhrase.length){
+   return true;
+ } else {
+   return false;
+ }
+ }
+
 
 /*
  * Increases the value of the missed property
@@ -86,7 +102,7 @@
  * Checks if player has remaining lives and ends game is player is out
 */
    removeLife(){
-     
+
    }
 
 /*
