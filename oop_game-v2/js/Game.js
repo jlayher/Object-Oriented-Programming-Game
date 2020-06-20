@@ -52,48 +52,38 @@
      this.activePhrase.addPhraseToDisplay();
    }
 
-
+/**
+ * Handles onscreen keyboard button clicks
+ * @param (HTMLButtonElement) button - the clicked button element
+ */
 
    handleInteraction(letter){
-     const clicked = letter;
-     //check phrase for match ** checkLetter() method in Phrase.js
-        //if there IS A match, the letter must be displayed on screen instead of the placeholder
-        // call showMatchedLetter()
-
-        //if there is NO match, the game must remove a life from the scoreboard
-
-        //check if player won the game.  if all letters in phrase are revealed, gameWon = true ? (so does gameWon need to be null unless a specific true or false condition is met?)
-        //check if player lost the game.  if player is out of lives, gameWon = false and is fed to gameOver method ?
+     console.log(letter);
+     letter.disabled = true;
+     if(this.activePhrase.checkLetter(letter.textContent)){
+       letter.classList.add('chosen');
+       this.activePhrase.showMatchedLetter(letter.textContent);
+       this.checkForWin();
+     }else{
+       letter.classList.add('wrong');
+       this.removeLife();
+       this.checkForWin();
+     }
    }
 
 /*
  * Checks for winning move
  * @return {boolean} True if game has been won, false if game wasn't won
 */
-// check to see if player has shown all of the letters in the active phrase
- // split active phrase into an array of single letters
- // itterate over the array of letters
-    // if all letters have the class name show, or if no letters have the hidden class...
-      // then checkForWin returns True
-    // else checkForWin returns False
    checkForWin(){
-     const lettersInPhrase = document.querySelectorAll('#phrase li');
-     let spaceLi = 0;
-     let shownLi = 0;
-
-     for (let i = 0; i < lettersInPhrase.length; i++){
-       if(lettersInPhrase[i].classList.contains('show')){
-        shownLi += 1;
-       }else if(lettersInPhrase[i].classList.contains('space')){
-        shownLi += 1;
-       }
+     const phraseLength = document.querySelectorAll('#phrase li').length;
+     const spacesLength = document.querySelectorAll('#phrase .space').length;
+     const lettersLength = phraseLength - spacesLength;
+     const shownLength = document.querySelectorAll('#phrase .show').length;
+     if(lettersLength === shownLength){
+       this.gameOver();
+     }
    }
-   if (shownLi >= lettersInPhrase.length){
-   return true;
- } else {
-   return false;
- }
- }
 
 
 /*
@@ -102,7 +92,12 @@
  * Checks if player has remaining lives and ends game is player is out
 */
    removeLife(){
-
+     let heartPng = document.querySelectorAll('#scoreboard img');
+     heartPng[this.missed].src="images/lostHeart.png";
+     this.missed += 1;
+     if (this.missed >= 5){
+       this.gameOver();
+     }
    }
 
 /*
@@ -110,6 +105,37 @@
  * @param {boolean} gameWon - Whether or not the user won the game
 */
    gameOver(gameWon){
+     let message = document.querySelector('#game-over-message');
+     let resetButton = document.querySelector('#btn__reset');
+     let overlay = document.querySelector('#overlay');
+     overlay.style.display = '';
+     if (this.missed < 5){
+       message.innerText = "Winner!";
+       resetButton.innerText = "Another One!";
+       overlay.classList.add('win');
+     } else {
+       message.innerText = "Oops! You'll Get It Next Time!";
+       resetButton.innterText = "Give It Another Shot!";
+       overlay.classList.add('lose');
+     }
+     this.resetGame();
+   }
+
+   resetGame(){
+     this.missed=0
+     let disabledButtons = document.querySelectorAll('#qwerty button[disabled]');
+     for (let i=0; i<disabledButtons.length; i++){
+       disabledButtons[i].disabled = false;
+       disabledButtons[i].classList.add('key');
+       disabledButtons[i].classList.remove('chosen');
+       disabledButtons[i].classList.remove('wrong');
+     }
+     document.querySelectorAll('#scoreboard img').forEach(png =>{png.src='images/liveHeart.png'});
+     const phraseUl = document.querySelector('#phrase ul');
+     for(let i = 0; i<phraseUl.length; i++){
+       phraseUl.removeChild(phraseUl.firstChild);
+     }
 
    }
+
  }

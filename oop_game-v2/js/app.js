@@ -12,9 +12,27 @@
 //test code
 
 let game;
-//who decided to give the ID a double underscore??  If this is conventional programming, explain it in a lesson.
+const qwerty = document.getElementById('qwerty');
 const resetButton = document.getElementById('btn__reset');
+
 resetButton.addEventListener('click', () => {
   game = new Game();
   game.startGame();
 });
+
+qwerty.addEventListener('click', (e) => {
+  if (event.target.className === 'key'){
+    game.handleInteraction(e.target);
+  }
+});
+
+
+//select the keyboard buttons' container
+//add a click event listener
+//make sure that clicking the space between
+//and around the onscreen keyboard buttons does not result in the method being called
+//in the callback to the event listener,
+  //call game.handleInteraction()
+
+//!! go to handleInteraction, and add this code:
+// handleInteraction(button) {
