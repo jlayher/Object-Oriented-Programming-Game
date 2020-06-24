@@ -1,8 +1,6 @@
 /* Treehouse FSJS Techdegree
  * Project 4 - OOP Game App
  * Game.js */
-
-
 /*
  * Game.js is used to create a Game class,
  * Methods for starting and ending the game,
@@ -12,6 +10,11 @@
  * Removing a life from the scoreboard
 */
 
+/**
+ * initializes missed = 0,
+ * phrases set to createPhrases method, returning 5 phrase objects
+ * activePhrase = null
+ */
  class Game {
    constructor(){
      this.missed = 0;
@@ -52,13 +55,11 @@
      this.activePhrase.addPhraseToDisplay();
    }
 
-/**
+   /**
  * Handles onscreen keyboard button clicks
  * @param (HTMLButtonElement) button - the clicked button element
  */
-
    handleInteraction(letter){
-     console.log(letter);
      letter.disabled = true;
      if(this.activePhrase.checkLetter(letter.textContent)){
        letter.classList.add('chosen');
@@ -67,11 +68,10 @@
      }else{
        letter.classList.add('wrong');
        this.removeLife();
-       this.checkForWin();
      }
    }
 
-/*
+   /*
  * Checks for winning move
  * @return {boolean} True if game has been won, false if game wasn't won
 */
@@ -86,7 +86,7 @@
    }
 
 
-/*
+   /*
  * Increases the value of the missed property
  * Remove a life from the scoreboard
  * Checks if player has remaining lives and ends game is player is out
@@ -100,7 +100,7 @@
      }
    }
 
-/*
+   /*
  * Displays game over message
  * @param {boolean} gameWon - Whether or not the user won the game
 */
@@ -118,9 +118,16 @@
        resetButton.innterText = "Give It Another Shot!";
        overlay.classList.add('lose');
      }
-     this.resetGame();
    }
 
+   /**
+ * Resets the game
+ * Resets missed counter
+ * Enables all previously guessed buttons
+ * Restores liveHeart images
+ * Empties the phrase Ul of all li elements
+ * Resets overlay class name
+*/
    resetGame(){
      this.missed=0
      let disabledButtons = document.querySelectorAll('#qwerty button[disabled]');
@@ -131,11 +138,12 @@
        disabledButtons[i].classList.remove('wrong');
      }
      document.querySelectorAll('#scoreboard img').forEach(png =>{png.src='images/liveHeart.png'});
+
      const phraseUl = document.querySelector('#phrase ul');
-     for(let i = 0; i<phraseUl.length; i++){
+     while(phraseUl.firstChild) {
        phraseUl.removeChild(phraseUl.firstChild);
      }
-
+     const overlay = document.querySelector('#overlay');
+     overlay.className = '';
    }
-
  }

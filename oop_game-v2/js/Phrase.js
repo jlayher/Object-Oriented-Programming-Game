@@ -31,7 +31,7 @@
        }
      }
 
-/*
+   /*
  * Checks if passed letter is in phrase
  * @param (string) letter - Letter to check
 */
@@ -39,7 +39,7 @@
      return this.phrase.includes(letter);  //true or false?
    }
 
-/*
+   /*
  * Displays passed letter on screen after a match is found
  * @param (string) letter - Letter to display
 */
