@@ -3,31 +3,35 @@
 
 /* Variables */
 
+/* changed several of the color and transition properties*/
 :root {
-  --color-win: #78CF82;
-  --color-lose: #D94545;
-  --color-start: #5b85b7;
+  --color-win: #26b9c7;
+  --color-lose: #8c2d1c;
+  --color-start: #149121;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
-  --color-keys: #37474F;
-  --color-keys-light: #E5E5E5;
+  --color-keys: #4a212d;
+  --color-keys-light: #a4ab9f;
   --font-size-large: 60px;
   --font-size-medium: 20px;
-  --transition: all .2s ease-in-out;
+  --transition: all .5s ease-out;
 }
 
 /* main */
 
+/* Changed Font */
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Cursive', serif;
 }
 
+/* added linear-gradient background image prop*/
 body {
   justify-content: space-evenly;
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-image:  linear-gradient(red, yellow);
 }
 
 li, ol, ul {
@@ -107,8 +111,14 @@ button {
   width: 15px;
 }
 
+/* Animation for .show */
+@keyframes show-fade {
+  0% {background-color: purple}
+  50% {background-color: slategrey}
+  100% {background-color: skyblue}
+}
 
-
+/* Changed animation of shown letters */
 .show {
   color: #fff;
   background-color: #4ac0d5;
@@ -118,8 +128,10 @@ button {
   padding: 20px 1px 0 1px;
   margin-right: 2px;
   border-radius: 5px;
-  -webkit-animation-duration: .5s;
-  animation-duration: .5s;
+  /*-webkit-animation-duration: .5s;*/
+  animation-name: show-fade;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
 }
 
 
@@ -130,15 +142,16 @@ button {
   justify-content: center;
 }
 
+  /* Updated Background Color*/
 .chosen {
-  background: #3a3f58;
+  background: #009900;
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
 }
-
+  /* Updated Background Color */
 .wrong {
-  background: #f7a964;
+  background: #ff3385;
   color: #FFFFFF;
 }
 
@@ -179,8 +192,19 @@ button {
   color: #FFF;
 }
 
+/* .start background color animation */
+@keyframes start-fade {
+  0% {background-color: purple}
+  25% {background-color: maroon}
+  50% {background-color: slategrey}
+  75% {background-color: #b3b300}
+  100% {background-color: black}
+}
 .start {
   background-color: #3a3f58;
+  animation-name: start-fade;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
 }
 
 .start a {
@@ -201,10 +225,4 @@ button {
 
 .lose a {
   color: var(--color-lose);
-}
-
-// Extra Credit Styles
-button .key {
-  color: #00ccff;
-  background-color: #3a3f58;
 }
