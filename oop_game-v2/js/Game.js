@@ -22,10 +22,10 @@
      this.activePhrase = null;
    }
 
-   /*
-    * Creates phrases for use in game
-    * @return {array} An array of phrases that could be used in the game
-   */
+/**
+  * Creates phrases for use in game
+  * @return {array} An array of phrases that could be used in the game
+  */
    createPhrases(){
      return [
      new Phrase('Rip and Tear'),
@@ -36,18 +36,18 @@
     ];
    }
 
-   /*
-    * Selects random phrase from the phrases property
-    * @return {Object} Phrase object chosen to be used
-   */
+/**
+  * Selects random phrase from the phrases property
+  * @return {Object} Phrase object chosen to be used
+  */
    getRandomPhrase(){
      const randomPhrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
      return randomPhrase;
    }
 
-   /*
-    * Begins game by selecting a random phrase and displaying it to user
-   */
+/**
+  * Begins game by selecting a random phrase and displaying it to user
+  */
    startGame(){
      const startScreen = document.getElementById('overlay');
      startScreen.style.display = 'none';
@@ -55,10 +55,10 @@
      this.activePhrase.addPhraseToDisplay();
    }
 
-   /**
- * Handles onscreen keyboard button clicks
- * @param (HTMLButtonElement) button - the clicked button element
- */
+/**
+  * Handles onscreen keyboard button clicks
+  * @param (HTMLButtonElement) button - the clicked button element
+  */
    handleInteraction(letter){
      letter.disabled = true;
      if(this.activePhrase.checkLetter(letter.textContent)){
@@ -71,10 +71,10 @@
      }
    }
 
-   /*
+/*
  * Checks for winning move
  * @return {boolean} True if game has been won, false if game wasn't won
-*/
+ */
    checkForWin(){
      const phraseLength = document.querySelectorAll('#phrase li').length;
      const spacesLength = document.querySelectorAll('#phrase .space').length;
@@ -86,7 +86,7 @@
    }
 
 
-   /*
+/*
  * Increases the value of the missed property
  * Remove a life from the scoreboard
  * Checks if player has remaining lives and ends game is player is out
@@ -100,7 +100,7 @@
      }
    }
 
-   /*
+/*
  * Displays game over message
  * @param {boolean} gameWon - Whether or not the user won the game
 */
@@ -120,7 +120,7 @@
      }
    }
 
-   /**
+/**
  * Resets the game
  * Resets missed counter
  * Enables all previously guessed buttons
