@@ -1,6 +1,5 @@
-/* Treehouse FSJS Techdegree
- * Project 4 - OOP Game App
- * Game.js */
+
+/* Game.js */
 /*
  * Game.js is used to create a Game class,
  * Methods for starting and ending the game,
@@ -31,8 +30,8 @@
      new Phrase('Rip and Tear'),
      new Phrase('Now this is Podracing'),
      new Phrase('Keep your stupid comments in your pocket'),
-     new Phrase('Miyazaki is a Sweety'),
-     new Phrase('My Dad Works At NINTENDO')
+     new Phrase('To Catch Them Is My Real Test'),
+     new Phrase('My Dad sells tupperware')
     ];
    }
 
@@ -102,9 +101,8 @@
 
 /*
  * Displays game over message
- * @param {boolean} gameWon - Whether or not the user won the game
 */
-   gameOver(gameWon){
+   gameOver(){
      let message = document.querySelector('#game-over-message');
      let resetButton = document.querySelector('#btn__reset');
      let overlay = document.querySelector('#overlay');
@@ -133,7 +131,6 @@
      let disabledButtons = document.querySelectorAll('#qwerty button[disabled]');
      for (let i=0; i<disabledButtons.length; i++){
        disabledButtons[i].disabled = false;
-       disabledButtons[i].classList.add('key');
        disabledButtons[i].classList.remove('chosen');
        disabledButtons[i].classList.remove('wrong');
      }

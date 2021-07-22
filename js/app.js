@@ -1,12 +1,9 @@
-/* Treehouse FSJS Techdegree
- * Project 4 - OOP Game App
- * app.js */
+/* OOP Game App */
 
 /** app.js
  * used to create a new instance of the 'Game' class and
  * add event listeners for the start button and onscreen keyboard buttons
  */
-
 
 // Declare Variables
 let game;
@@ -26,14 +23,12 @@ resetButton.addEventListener('click', () => {
 
 //Adds event listener to onscreen key buttons and calls handleInteraction
 qwerty.addEventListener('click', (e) => {
-  if (event.target.className === 'key'){
+  if (e.target.className === 'key'){
     game.handleInteraction(e.target);
   }
 });
 
-/**
- * Extra Credit Part 1, Added Keyboard Functionality
- */
+//Keyboard Functionality
 window.addEventListener('keydown', (e) => {
   //testing regex against keyboard button to make sure it is a lowercase english letter
   if (/^[a-z]+$/.test(e.key)){
